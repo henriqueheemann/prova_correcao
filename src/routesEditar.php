@@ -7,27 +7,27 @@ use Slim\Http\Response;
 return function (App $app) {
     $container = $app->getContainer();
 
-    $app->get('/atualizar/[{id}]', function (Request $request, Response $response, array $args) use ($container) {
+    $app->get('/editar/[{id}]', function (Request $request, Response $response, array $args) use ($container) {
 
         // Sample log message
-        $container->get('logger')->info("Slim-Skeleton '/atualizar/' route");
+        $container->get('logger')->info("Slim-Skeleton '/editar/' route");
 
         $conexao = $container->get('pdo');
 
         $resultSet = $conexao->query ('SELECT * FROM carro WHERE id = ' . $args['id'])->fetchAll();
 
-        $_SESSION['carroAtualizar']['modelo'] = $resultSet[0]['modelo'];
-        $_SESSION['carroAtualizar']['marca'] = $resultSet[0]['marca'];
-        $_SESSION['carroAtualizar']['ano'] = $resultSet[0]['ano'];
+        $_SESSION['carroEditar']['modelo'] = $resultSet[0]['modelo'];
+        $_SESSION['carroEditar']['marca'] = $resultSet[0]['marca'];
+        $_SESSION['carroEditar']['ano'] = $resultSet[0]['ano'];
 
         // Render index view
-        return $container->get('renderer')->render($response, 'atualizar.phtml', $args);
+        return $container->get('renderer')->render($response, 'editar.phtml', $args);
     });
 
-    $app->post('/atualizarCarro/[{id}]', function (Request $request, Response $response, array $args) use ($container) {
+    $app->post('/editarCarro/[{id}]', function (Request $request, Response $response, array $args) use ($container) {
 
         // Sample log message
-        $container->get('logger')->info("Slim-Skeleton '/atualizarCarro/' route");
+        $container->get('logger')->info("Slim-Skeleton '/editarCarro/' route");
 
         $conexao = $container->get('pdo');
 
@@ -44,6 +44,6 @@ return function (App $app) {
         }
         
         // Render index view
-        return $container->get('renderer')->render($response, 'atualizar.phtml', $args);
+        return $container->get('renderer')->render($response, 'editar.phtml', $args);
     });
 };
