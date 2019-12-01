@@ -19,6 +19,7 @@
                         <th scope="col">Modelo</th>
                         <th scope="col">Marca</th>
                         <th scope="col">Ano</th>
+                        <th scope="col">Editar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,6 +30,7 @@
                             echo '<td>' . $carro['modelo'] .'</td>';
                             echo '<td>' . $carro['marca'] . '</td>';
                             echo '<td>' . $carro['ano'] . '</td>';
+                            echo '<td><a class="btn btn-primary" href="/atualizar/' . $carro['id'] .'">Atualizar</a></td>';
                         echo '</tr>';
                     }
                     ?>
