@@ -14,6 +14,11 @@ return function (App $app) {
 
         $conexao = $container->get('pdo');
 
+        $adicionarDono - $conexao->query('SELECT * FROM proprietario')->fetchAll();
+        $args['adicionarDono'] = $adicionarDono;
+
+        $queryDono - $conexao->query('SELECT nomeProprietario FROM dono WHERE id = ' . $args['id'])->fetchAll();
+
         $resultSet = $conexao->query ('SELECT * FROM carro WHERE id = ' . $args['id'])->fetchAll();
 
         $_SESSION['carroEditar']['modelo'] = $resultSet[0]['modelo'];
@@ -33,14 +38,21 @@ return function (App $app) {
 
         $params = $request->getParsedBody();
 
-        $atualizar = $_POST;
+        $editar = $_POST;
 
-        if ($atualizar['modelo']== null || $atualizar['marca']== null || $atualizar['ano']== null) {
+        $queryDono - $conexao->query('SELECT nomeProprietario FROM proprietario WHERE id = ' . $args['id'])->fetchAll();
+        $args['donos'] = $queryDono;
+
+        $adicionarDono - $conexao->query('SELECT * FROM proprietario')->fetchAll();
+        $args['adicionarDono'] = $adicionarDono;
+
+
+        if ($editar['modelo']== null || $editar['marca']== null || $editar['ano']== null) {
             $args['erro'] = "Erro! Tente Novamente.";
         } else {
-            $resultSet = $conexao->query ('UPDATE carro SET modelo = "' . $atualizar['modelo'] . '", 
-                                                            marca = "' . $atualizar['marca'] . '",
-                                                            ano = ' . $atualizar['ano'] . ' WHERE id = ' . $args['id'])->fetchAll();
+            $resultSet = $conexao->query ('UPDATE carro SET modelo = "' . $editar['modelo'] . '", 
+                                                            marca = "' . $editar['marca'] . '",
+                                                            ano = ' . $editar['ano'] . ' WHERE id = ' . $args['id'])->fetchAll();
         }
         
         // Render index view

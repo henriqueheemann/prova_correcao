@@ -7,7 +7,7 @@ use Slim\Http\Response;
 return function (App $app) {
     $container = $app->getContainer();
 
-    $app->get('/excluir/[{id}]', function (Request $request, Response $response, array $args) use ($container) {
+    $app->post('/excluir/[{id}]', function (Request $request, Response $response, array $args) use ($container) {
 
         // Sample log message
         $container->get('logger')->info("Slim-Skeleton '/excluir/' route");
