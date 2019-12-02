@@ -14,10 +14,10 @@ return function (App $app) {
 
         $conexao = $container->get('pdo');
 
-        $adicionarDono - $conexao->query('SELECT * FROM proprietario')->fetchAll();
-        $args['adicionarDono'] = $adicionarDono;
+        // $adicionarDono - $conexao->query('SELECT * FROM proprietario')->fetchAll();
+        // $args['adicionarDono'] = $adicionarDono;
 
-        $queryDono - $conexao->query('SELECT nomeProprietario FROM dono WHERE id = ' . $args['id'])->fetchAll();
+        // $queryDono - $conexao->query('SELECT nomeProprietario FROM dono WHERE id = ' . $args['id'])->fetchAll();
 
         $resultSet = $conexao->query ('SELECT * FROM carro WHERE id = ' . $args['id'])->fetchAll();
 
