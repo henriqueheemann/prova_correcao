@@ -40,11 +40,11 @@ return function (App $app) {
 
         $editar = $_POST;
 
-        $queryDono - $conexao->query('SELECT nomeProprietario FROM proprietario WHERE id = ' . $args['id'])->fetchAll();
-        $args['donos'] = $queryDono;
+        // $queryDono - $conexao->query('SELECT nomeProprietario FROM proprietario WHERE id = ' . $args['id'])->fetchAll();
+        // $args['donos'] = $queryDono;
 
-        $adicionarDono - $conexao->query('SELECT * FROM proprietario')->fetchAll();
-        $args['adicionarDono'] = $adicionarDono;
+        // $adicionarDono - $conexao->query('SELECT * FROM proprietario')->fetchAll();
+        // $args['adicionarDono'] = $adicionarDono;
 
 
         if ($editar['modelo']== null || $editar['marca']== null || $editar['ano']== null) {
