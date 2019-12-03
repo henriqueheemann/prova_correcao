@@ -8,6 +8,7 @@
     <title>Cadastro</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../cadastro.css">
+    <link rel="shortcut icon" href="../logo.png" type="image/x-icon">
 </head>
 
 <body>
@@ -20,7 +21,7 @@
                 <div class="row">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text titulo">Modelo</span>
+                            <span class="input-group-text titulo">Nome do modelo</span>
                         </div>
                         <input type="text" name="modelo" placeholder="Modelo" class="form-control" required>
                     </div>
@@ -41,13 +42,28 @@
                         <input type="number" name="ano" placeholder="Ano" class="form-control" required>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text titulo" for="inputGroupSelect01">Proprietário</label>
+                        </div>
+                        <select class="custom-select" id="inputGroupSelect01" required>
+                            <option selected value="">Escolha...</option>
+                        <?php
+                        foreach ($proprietarios as $key => $propietario) {
+                            echo '<option value=" ' . $proprietario['id'] .'">' . $propietario['nomeProprietario'] . '</option>';
+                        }
+                        ?>
+                        </select>
+                    </div>
+                </div>
             </div>
             <div class="col-12">
                 <div class="row">
-                    <div class="col-sm text-center mb-3">
-                        <button type="submit" class="btn btn-primary">Cadastrar</button>
+                    <div class="col-sm text-center">
+                        <button class="btn btn-primary" type="submit">Cadastrar</button>
                     </div>
-                    <div class="col-sm text-center mb-3">
+                    <div class="col-sm text-center">
                         <a href="/tabela/" class="btn btn-primary">Tabela</a>
                     </div>
                 </div>

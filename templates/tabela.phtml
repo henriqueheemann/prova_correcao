@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tabela</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="shortcut icon" href="../logo.png" type="image/x-icon">
 </head>
 
 <body>
@@ -21,6 +22,8 @@
                         <th class="text-center" scope="col">Ano</th>
                         <th class="text-center" scope="col">Ação</th>
                         <th class="text-center" scope="col">Ação</th>
+                        <th class="text-center" scope="col">Proprietário</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -28,11 +31,12 @@
                     foreach ($carros as $key => $carro) {
                         echo '<tr>';
                             echo '<th class="text-center" scope="row">' . $carro['id'] . '</th>';
-                            echo '<td class="text-center">' . $carro['modelo'] .'</td>';
+                            echo '<td class="text-center">' . $carro['modelo'] . '</td>';
                             echo '<td class="text-center">' . $carro['marca'] . '</td>';
                             echo '<td class="text-center">' . $carro['ano'] . '</td>';
-                            echo '<td class="text-center"><a href="/editar/' . $carro['id'] .'" class="btn btn-primary">Editar</a></td>';
-                            echo '<td class="text-center"><a href="/excluir/' . $carro['id'] .'" class="btn btn-primary">Excluir</a></td>';
+                            echo '<td class="text-center"><a href="/editar/' . $carro['id'] . '" class="btn btn-primary">Editar</a></td>';
+                            echo '<td class="text-center"><a href="/excluir/' . $carro['id'] . '" class="btn btn-primary">Excluir</a></td>';
+                            echo '<td class="text-center">' . $carro['nomeProprietario'] . '</td>';
                         echo '</tr>';
                     }
                     ?>

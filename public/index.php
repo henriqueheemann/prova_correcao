@@ -38,5 +38,8 @@ $routes($app);
 $routes = require __DIR__ . '/../src/routesExcluir.php';
 $routes($app);
 
+$routes = require __DIR__ . '/../src/routesCadastroProprietario.php';
+$routes($app);
+
 // Run app
 $app->run();

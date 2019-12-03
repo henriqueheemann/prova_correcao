@@ -12,13 +12,17 @@ return function (App $app) {
         // Sample log message
         $container->get('logger')->info("Slim-Skeleton '/tabela/' route");
 
-        $conexao = $container->get('pdo');
+        $conexao = $container->get('pdo');  
 
-        $resultSet = $conexao->query('SELECT * FROM carro')->fetchAll();
+        $resultSet = $conexao->query('SELECT C.*, P.nomeProprietario FROM carro AS C
+                                      LEFT JOIN carro_proprietario AS CP ON C.id = CP.id_carro
+                                      LEFT JOIN proprietario AS P ON CP.id_proprietario = P.id')->fetchAll();
 
         $args['carros'] = $resultSet;
-        
+
         // Render index view
         return $container->get('renderer')->render($response, 'tabela.phtml', $args);
+
     });
+
 };
