@@ -12,53 +12,68 @@
 </head>
 
 <body>
-        <div class="container">
-            <div class="col-12">
-                <div class="text-center m-5">
+    <div class="container">
+        <div class="col-12">
+            <div class="text-center m-5">
                 <?php
-                    echo '<h1>Atualize o item ' . $id . '</h1>';
-                    echo '<form action="/editarCarro/' . $id . '" method="post">';
+                echo '<h1>Atualize o item ' . $id . '</h1>';
+                echo '<form action="/editarCarro/' . $id . '" method="post">';
                 ?>
-                </div>
-                <div class="row">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text titulo">Nome do modelo</span>
-                        </div>
-                        <input type="text" name="modelo" placeholder="Modelo" class="form-control" required>
+            </div>
+            <div class="row">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text titulo">Nome do modelo</span>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text titulo">Marca</span>
-                        </div>
-                        <input type="text" name="marca" placeholder="Marca" class="form-control" required>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text titulo">Ano</span>
-                        </div>
-                        <input type="number" name="ano" placeholder="Ano" class="form-control" required>
-                    </div>
+                    <input type="text" name="modelo" placeholder="Modelo" class="form-control" required>
                 </div>
             </div>
-            <div class="col-12">
-                <div class="row">
-                    <div class="col-sm text-center">
-                        <button class="btn btn-primary" type="submit">Salvar</button>
+            <div class="row">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text titulo">Marca</span>
                     </div>
-                    <div class="col-sm text-center">
-                        <a href="/tabela/" class="btn btn-primary">Tabela</a>
+                    <input type="text" name="marca" placeholder="Marca" class="form-control" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text titulo">Ano</span>
                     </div>
-                    <div class="col-sm text-center">
-                        <a href="/cadastro/" class="btn btn-primary">Cadastro</a>
+                    <input type="number" name="ano" placeholder="Ano" class="form-control" required>
+                </div>
+            </div>
+            <div class="row">
+            <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text titulo" for="inputGroupSelect01">Proprietário</label>
+                        </div>
+                        <select class="custom-select" id="inputGroupSelect01" required>
+                            <option selected value="">Escolha...</option>
+                        <?php
+                        foreach ($editar as $key => $edita) {
+                            echo '<option value="' . $edita['carro_proprietario.id'] . '">' . $edita['nomeProprietario'] . '</option>';
+                        }
+                        ?>
+                        </select>
                     </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row">
+                <div class="col-sm text-center">
+                    <button class="btn btn-primary" type="submit">Salvar</button>
+                </div>
+                <div class="col-sm text-center">
+                    <a href="/tabela/" class="btn btn-primary">Tabela</a>
+                </div>
+                <div class="col-sm text-center">
+                    <a href="/cadastro/" class="btn btn-primary">Cadastro</a>
                 </div>
             </div>
         </div>
+    </div>
     </form>
 </body>
 

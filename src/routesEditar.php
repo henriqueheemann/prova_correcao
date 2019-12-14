@@ -14,11 +14,14 @@ return function (App $app) {
 
         $conexao = $container->get('pdo');
         
-        $resultSet = $conexao->query ('SELECT * FROM carro WHERE id = ' . $args['id'])->fetchAll();
+        $resultSet = $conexao->query ('SELECT DISTINCT * FROM carro AS C, proprietario AS P, carro_proprietario AS CP WHERE C.id = ' . $args['id'])->fetchAll();
         
         $_SESSION['carroEditar']['modelo'] = $resultSet[0]['modelo'];
         $_SESSION['carroEditar']['marca'] = $resultSet[0]['marca'];
         $_SESSION['carroEditar']['ano'] = $resultSet[0]['ano'];
+        $_SESSION['carroEditar']['nomeProprietario'] = $resultSet[0]['nomeProprietario'];
+
+        $args['editar'] = $resultSet;
         
         // Render index view
         return $container->get('renderer')->render($response, 'editar.phtml', $args);
@@ -36,7 +39,8 @@ return function (App $app) {
 
         $resultSet = $conexao->query('UPDATE carro SET modelo = "' . $editar['modelo'] . '",
                                                        marca = "' . $editar['marca'] . '",
-                                                       ano = ' . $editar['ano'] . ' WHERE id = ' . $args['id'])->fetchAll();
+                                                       ano = ' . $editar['ano'] . ' WHERE id = ' . $args['id'] /*. 
+                                     'UPDATE carro_proprietario SET id_proprietario = ' . $editar['carro_proprietairo.id']*/)->fetchAll();
                  
         return $container->get('renderer')->render($response, 'editar.phtml', $args);
     });
